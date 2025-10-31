@@ -1,7 +1,8 @@
 
 # XF402 — Time-Based Access for Digital Assets
 
-[<img src="images/Xlogo.svg" alt="X logo" width="20" height="20" style="vertical-align:text-bottom;"/> - XF402 Protocol X/Twitter](https://x.com/XF402)
+
+[<img src="images/Xlogo.png" alt="X logo" width="16"/> - XF402 Protocol X/Twitter](https://x.com/XF402)
 
 **Temporary rights. On-chain proof. Powered by x402 + Solana.**
 
