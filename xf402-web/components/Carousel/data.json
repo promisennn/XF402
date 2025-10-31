@@ -1,7 +1,7 @@
 [
   {
     "tempId": 0,
-    "text": "FX402 is an open protocol for renting and licensing digital collectibles — NFTs, tickets, and media — using Coinbase’s x402 payment standard.",
+    "text": "XF402 is an open protocol for renting and licensing digital collectibles — NFTs, tickets, and media — using Coinbase’s x402 payment standard.",
     "sub": "Protocol Overview"
   },
   {
@@ -16,7 +16,7 @@
   },
   {
     "tempId": 3,
-    "text": "No smart-contract custody or token transfer required. FX402 runs on an honor system, using HTTP 402 payment flows and verifiable receipts.",
+    "text": "No smart-contract custody or token transfer required. XF402 runs on an honor system, using HTTP 402 payment flows and verifiable receipts.",
     "sub": "Trust-Light Model"
   },
   {
@@ -26,7 +26,7 @@
   },
   {
     "tempId": 5,
-    "text": "Includes a full developer suite — JavaScript SDK (`@fx402/r402`) and Python FastAPI plugin (`fx402-fastapi`) — to handle 402 paywalls automatically.",
+    "text": "Includes a full developer suite — JavaScript SDK (`@XF402/r402`) and Python FastAPI plugin (`XF402-fastapi`) — to handle 402 paywalls automatically.",
     "sub": "SDKs & Tools"
   },
   {
@@ -46,7 +46,7 @@
   },
   {
     "tempId": 9,
-    "text": "From temporary access passes to ticket rentals, FX402 bridges Web2 simplicity with Web3 verifiability — the universal rental layer for digital assets.",
+    "text": "From temporary access passes to ticket rentals, XF402 bridges Web2 simplicity with Web3 verifiability — the universal rental layer for digital assets.",
     "sub": "Vision Statement"
   },
   {
@@ -57,6 +57,6 @@
   {
     "tempId": 11,
     "text": "The mission is simple: move digital ownership from static possession to dynamic participation — rent, share, and remix on your own terms.",
-    "sub": "FX402 Philosophy"
+    "sub": "XF402 Philosophy"
   }
 ]

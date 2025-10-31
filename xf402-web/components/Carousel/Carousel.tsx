@@ -3,7 +3,7 @@
 import { useLayoutEffect, useState, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { CarouselCard } from "./CarouselCard";
-import FX402_DATA from "./data.json";
+import XF402_DATA from "./data.json";
 
 const CARD_SIZE_LG = 400;
 const CARD_SIZE_SM = 400;
@@ -19,7 +19,7 @@ export const Carousel = () => {
     return CARD_SIZE_LG;
   });
 
-  const [cards, setCards] = useState<typeof FX402_DATA>(FX402_DATA);
+  const [cards, setCards] = useState<typeof XF402_DATA>(XF402_DATA);
 
   const handleMove = useCallback(
     (position: number) => {

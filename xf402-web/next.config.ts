@@ -3,10 +3,12 @@ import nextra from "nextra";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  serverExternalPackages: [],
 };
 
 const withNextra = nextra({
-  // ... Add Nextra-specific options here
+  defaultShowCopyCode: true,
+  contentDirBasePath: '/docs',
 });
 
 nextConfig.turbopack = {

@@ -19,7 +19,7 @@ const Copy = () => {
       <div className="mx-auto flex max-w-7xl items-end justify-between p-4 px-16 pb-16">
         <div>
           <h1 className="mb-6 max-w-4xl text-6xl font-black leading-[1.1] text-white md:text-8xl">
-            FX402
+            XF402
           </h1>
           <div className="flex flex-wrap gap-4">
             <button className="bg-white text-black px-4 py-2 rounded-md">

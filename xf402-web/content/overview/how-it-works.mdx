@@ -1,0 +1,99 @@
+
+# How It Works
+
+XF402 implements a **renting and licensing flow** atop the [x402](https://github.com/coinbase/x402) payment protocol.  
+It introduces a new profile — **R402** — describing how time-based usage rights are offered, paid for, and verified.
+
+---
+
+## 🔁 Lifecycle Overview
+
+Every R402 transaction follows a three-step cycle:
+
+### 1. Request → 402 Payment Required
+
+A client requests access to a protected resource.
+
+```http
+GET /nft/rare-001.png
+```
+
+The server responds with an **HTTP 402 Payment Required**, including a JSON payload that defines rental options and terms:
+
+```json
+{
+  "standard": "x402",
+  "profile": "r402/v1",
+  "usage": {
+    "tiers": [
+      { "id": "1d", "price": { "amount": "0.50", "currency": "USDC", "chain": "solana" } },
+      { "id": "7d", "price": { "amount": "2.00", "currency": "USDC", "chain": "solana" } }
+    ],
+    "modes": ["view", "remix"]
+  },
+  "pay_to": { "address": "SoLWallet111...", "chain": "solana" },
+  "facilitator": "https://facilitator.XF402.xyz/settle"
+}
+```
+
+---
+
+### 2. Payment → Verification
+
+The client (or SDK) selects a tier, completes payment to the specified wallet or facilitator, and provides proof of payment in a follow-up request:
+
+```json
+{
+  "standard": "x402",
+  "profile": "r402/v1",
+  "tier_id": "7d",
+  "payment_proof": {
+    "chain": "solana",
+    "currency": "USDC",
+    "tx": "4sJQd2cA...FyW"
+  }
+}
+```
+
+The server or facilitator verifies this proof (on-chain or via a settlement endpoint).
+
+---
+
+### 3. Unlock → Receipt Issued
+
+Upon successful verification, the server delivers the resource and issues a signed receipt to the client:
+
+```json
+{
+  "profile": "r402/v1",
+  "receipt": {
+    "resource": "nft:solana:mint:9abc...xyz",
+    "tier_id": "7d",
+    "paid": { "amount": "2.00", "currency": "USDC" },
+    "valid_from": "2025-10-29T00:00:00Z",
+    "valid_until": "2025-11-05T00:00:00Z",
+    "jwt": "<signed JWT>"
+  }
+}
+```
+
+This receipt serves as a portable license — the user can re-present it for access until expiry.
+
+---
+
+## 🧱 Core Components
+
+| Component               | Role                                                                                  |
+|-------------------------|---------------------------------------------------------------------------------------|
+| **Client / SDK**        | Handles requests, displays pricing, processes payment, and retries after payment      |
+| **Server**              | Defines tiers/rights, verifies payment, issues receipts, serves the asset             |
+| **Facilitator** (opt.)  | Independent service for payment validation, replay protection, and receipt signing    |
+| **Blockchain Layer**    | Confirms transactions (Solana USDC as first supported chain)                         |
+
+---
+
+## ⚙️ Implementation Paths
+
+- **Honor-System Mode:** Pure HTTP; minimal infra.
+- **Verified Mode:** Facilitator validates all payments, signs JWT receipts.
+- **Hybrid Mode:** Short-term/low-value rentals are honor-based; high-value are fully verified.

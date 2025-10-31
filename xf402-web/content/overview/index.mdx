@@ -1,0 +1,103 @@
+# What is XF402?
+
+XF402 is an extension of the **HTTP `402 Payment Required`** mechanism for the Web3 era — enabling **time-based access rights**, **usage licenses**, and **cryptographic receipts** for digital assets.
+
+It builds on Coinbase’s x402 standard and adds:
+
+| Capability                    | Description                                         |
+|-------------------------------|-----------------------------------------------------|
+| ⏳ **Time-bounded access**     | Access content for 1h, 1d, 7d, 30d, etc             |
+| 🎭 **Usage rights profiles**   | View, remix, commercial-lite, commercial-pro        |
+| ✅ **Verifiable receipts**     | JWT signature or on-chain anchor                    |
+| 🪙 **Wallet payments**         | Solana USDC first, other chains later               |
+| 🤖 **Agent automation**        | Autonomous bots pay on demand to unlock resources   |
+
+---
+
+## 🧠 Core Insight
+
+Web3 solved **ownership**, but never **usage**.
+
+XF402 introduces a primitive for:
+
+> _“Own forever or pay for temporary access — programmatically.”_
+
+It brings Web2 paywalls and licensing to **wallets + agents**.
+
+---
+
+## 🧩 Architecture at a Glance
+
+```
+sequenceDiagram
+Client ->> Server: Request asset
+Server ->> Client: 402 Payment Required + tier options
+Client ->> Blockchain: Pay USDC (Solana)
+Client ->> Server: Submit tx proof
+Server ->> Client: Asset + signed receipt
+Client ->> Resource: Access as long as receipt valid
+```
+
+---
+
+### 🔗 Relationship to x402
+
+| Layer                | Role                                 |
+|----------------------|--------------------------------------|
+| HTTP                 | Transport                            |
+| x402                 | Defines machine-payable HTTP         |
+| XF402 / R402         | Adds rental tiers, rights, receipts  |
+| Solana / L2s         | Settlement and proof layer           |
+
+- ✅ All R402 requests are valid x402 requests  
+- ✅ XF402 does not replace wallets, NFTs, or token ownership — it augments them
+
+---
+
+### 🏗️ Components
+
+| Component                | Purpose                                         |
+|--------------------------|-------------------------------------------------|
+| Client SDK               | Detects 402 → picks tier → pays → retries       |
+| Server handler           | Issues 402 + pricing                            |
+| Facilitator (optional)   | Verifies payment + signs receipt                |
+| Solana program (future)  | On-chain receipt registry / enforcement         |
+
+---
+
+### ✨ What XF402 Enables
+
+- Rent an NFT for 1 week
+- Pay-per-view media
+- Pay-per-remix meme licenses
+- Temporary ticket access (concerts, IRL events, Discords)
+- Pay-per-use API tokens (agent-to-agent flow)
+- Time-limited inference access to AI models
+- Permissioned content vaults / CDN gating
+
+---
+
+### 📦 Minimal Request/Response Pattern
+
+**Client → Server**
+```
+GET /poster.png
+```
+
+**Server → Client**
+```
+402 Payment Required
+{
+  "profile": "r402/v1",
+  "tiers": [
+    { "id": "1d", "price": "0.05 USDC" }
+  ]
+}
+```
+Client pays → retries → unlocks resource
+
+---
+
+### 🧭 Next
+
+- [How XF402 Works → how-it-works](/docs/overview/how-it-works)
