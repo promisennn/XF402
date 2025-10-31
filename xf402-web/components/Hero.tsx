@@ -149,7 +149,7 @@ const Buttons = ({
             }
           });
         }}
-        className="pointer-events-none absolute -top-[1px] bottom-0 z-20 bg-neutral-600/10"
+        className="pointer-events-none absolute -top-px bottom-0 z-20 bg-neutral-600/10"
       />
     </div>
   );
@@ -157,7 +157,12 @@ const Buttons = ({
 
 const SocialButtons = ({}) => {
   return (
-    <div className="relative flex items-center justify-center bg-white h-10">
+    <div className="relative flex items-center justify-center bg-white h-10" onClick={() => {
+      const carouselSection = document.getElementById("carousel-section");
+      if (carouselSection) {
+        carouselSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }}>
       <h1 className="text-black text-sm">Explore More</h1>
       <ChevronDown className="w-4 h-4 text-black" />
     </div>

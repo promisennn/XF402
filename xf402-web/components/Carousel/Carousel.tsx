@@ -75,6 +75,7 @@ export const Carousel = () => {
       style={{
         height: SECTION_HEIGHT,
       }}
+      id="carousel-section"
     >
       {cards.map((t, idx) => {
         let position = 0;
