@@ -1,0 +1,62 @@
+[
+  {
+    "tempId": 0,
+    "text": "FX402 is an open protocol for renting and licensing digital collectibles — NFTs, tickets, and media — using Coinbase’s x402 payment standard.",
+    "sub": "Protocol Overview"
+  },
+  {
+    "tempId": 1,
+    "text": "Instead of permanent ownership, creators can define time-based usage tiers — 1-day, 1-week, or 1-month access — all paid via x402 micro-transactions.",
+    "sub": "Pay-Per-Duration"
+  },
+  {
+    "tempId": 2,
+    "text": "Built on Solana for speed and cost efficiency. Each rental payment can optionally mint a signed access receipt on-chain.",
+    "sub": "Powered by Solana"
+  },
+  {
+    "tempId": 3,
+    "text": "No smart-contract custody or token transfer required. FX402 runs on an honor system, using HTTP 402 payment flows and verifiable receipts.",
+    "sub": "Trust-Light Model"
+  },
+  {
+    "tempId": 4,
+    "text": "Integrate payments directly into APIs or NFT metadata. Add `profile: r402/v1` and define tiers, prices, and rights with simple JSON.",
+    "sub": "Developer Friendly"
+  },
+  {
+    "tempId": 5,
+    "text": "Includes a full developer suite — JavaScript SDK (`@fx402/r402`) and Python FastAPI plugin (`fx402-fastapi`) — to handle 402 paywalls automatically.",
+    "sub": "SDKs & Tools"
+  },
+  {
+    "tempId": 6,
+    "text": "Turn memes, art, or collectibles into economic objects. Each file becomes rentable, remixable, and revenue-sharing capable.",
+    "sub": "On-Chain Media Licensing"
+  },
+  {
+    "tempId": 7,
+    "text": "Agents, dapps, and creators can transact seamlessly through machine-to-machine micro-payments — the next phase of the x402 agentic economy.",
+    "sub": "Agentic Economy"
+  },
+  {
+    "tempId": 8,
+    "text": "Deploy instantly — no infra setup required. Works with standard web servers, Next.js APIs, and any framework supporting HTTP headers.",
+    "sub": "Plug & Play Integration"
+  },
+  {
+    "tempId": 9,
+    "text": "From temporary access passes to ticket rentals, FX402 bridges Web2 simplicity with Web3 verifiability — the universal rental layer for digital assets.",
+    "sub": "Vision Statement"
+  },
+  {
+    "tempId": 10,
+    "text": "Every transaction returns a signed, portable license receipt — the user’s proof of access for a defined time window.",
+    "sub": "Access Receipts"
+  },
+  {
+    "tempId": 11,
+    "text": "The mission is simple: move digital ownership from static possession to dynamic participation — rent, share, and remix on your own terms.",
+    "sub": "FX402 Philosophy"
+  }
+]
