@@ -34,7 +34,7 @@ export default async function DocsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const pageMap = await getPageMap();
+  const pageMap = await getPageMap("/docs");
   
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
