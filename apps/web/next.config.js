@@ -9,11 +9,10 @@ const withNextra = nextra({
   contentDirBasePath: "/docs",
 });
 
-// ✅ Turbopack alias config for monorepo
 nextConfig.experimental = {
   turbo: {
     resolveAlias: {
-      "@": "./", 
+      "@": "./apps/web",
       "next-mdx-import-source-file": "./components/mdx-components.js",
     },
   },
