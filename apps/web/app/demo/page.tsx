@@ -18,7 +18,7 @@ export default function DemoPage() {
   const [expires, setExpires] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [requireTx, setRequireTx] = useState(false);
-  const [responseData, setResponseData] = useState<any>(null);
+  const [responseData, setResponseData] = useState(null);
 
   async function requestAsset() {
     setLoading(true);
