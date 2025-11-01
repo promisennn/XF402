@@ -60,6 +60,9 @@ importers:
       '@xf402/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
+      '@xf402/js':
+        specifier: workspace:*
+        version: link:../../packages/js
       '@xf402/tailwind-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
