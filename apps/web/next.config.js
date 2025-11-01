@@ -1,19 +1,22 @@
 import nextra from "nextra";
 
 const nextConfig = {
-  /* config options here */
   serverExternalPackages: [],
 };
 
 const withNextra = nextra({
   defaultShowCopyCode: true,
-  contentDirBasePath: '/docs',
+  contentDirBasePath: "/docs",
 });
 
-nextConfig.turbopack = {
-  resolveAlias: {
-    'next-mdx-import-source-file': './components/mdx-components.js'
-  }
+// ✅ Turbopack alias config for monorepo
+nextConfig.experimental = {
+  turbo: {
+    resolveAlias: {
+      "@": "./", 
+      "next-mdx-import-source-file": "./components/mdx-components.js",
+    },
+  },
 };
 
 export default withNextra(nextConfig);
