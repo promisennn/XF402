@@ -23,7 +23,7 @@ export const Carousel = () => {
   const [cards, setCards] = useState<typeof XF402_DATA>(XF402_DATA);
 
   const handleMove = useCallback((position: number) => {
-    setCards(prev => {
+    setCards((prev) => {
       const copy = [...prev];
 
       if (position > 0) {
@@ -61,7 +61,8 @@ export const Carousel = () => {
       id="carousel-section"
     >
       {cards.map((t, idx) => {
-        const center = cards.length % 2 ? (cards.length + 1) / 2 : cards.length / 2;
+        const center =
+          cards.length % 2 ? (cards.length + 1) / 2 : cards.length / 2;
         const position = idx - center;
 
         return (
@@ -78,11 +79,22 @@ export const Carousel = () => {
 
       {/* Controls */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-4">
-        <Button  size="icon" onClick={() => handleMove(-1)}>
-          <ChevronLeft />
+        <Button
+          variant="outline"
+          size="icon"
+          className="rounded-xl bg-background/40 backdrop-blur-md border-border/40 hover:bg-background/70"
+          onClick={() => handleMove(-1)}
+        >
+          <ChevronLeft className="w-5 h-5 text-white" />
         </Button>
-        <Button size="icon" onClick={() => handleMove(1)}>
-          <ChevronRight />
+
+        <Button
+          variant="outline"
+          size="icon"
+          className="rounded-xl bg-background/40 backdrop-blur-md border-border/40 hover:bg-background/70"
+          onClick={() => handleMove(1)}
+        >
+          <ChevronRight className="w-5 h-5 text-white" />
         </Button>
       </div>
     </div>
