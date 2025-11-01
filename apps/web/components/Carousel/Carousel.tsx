@@ -2,12 +2,13 @@
 
 import { useLayoutEffect, useState, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { CarouselCard } from "./CarouselCard";
 import XF402_DATA from "./data.json";
+import { CarouselCard } from "./CarouselCard";
+import { Button } from "@xf402/ui/components/button";
 
 const CARD_SIZE_LG = 400;
 const CARD_SIZE_SM = 400;
-const SECTION_HEIGHT = 600;
+const SECTION_HEIGHT = 700;
 
 export const Carousel = () => {
   const [cardSize, setCardSize] = useState(() => {
@@ -21,70 +22,47 @@ export const Carousel = () => {
 
   const [cards, setCards] = useState<typeof XF402_DATA>(XF402_DATA);
 
-  const handleMove = useCallback(
-    (position: number) => {
-      const copy = [...cards];
+  const handleMove = useCallback((position: number) => {
+    setCards(prev => {
+      const copy = [...prev];
 
       if (position > 0) {
         for (let i = position; i > 0; i--) {
-          const firstEl = copy.shift();
-          if (!firstEl) return;
-          copy.push({ ...firstEl, tempId: Math.random() });
+          const el = copy.shift();
+          if (!el) break;
+          copy.push({ ...el, tempId: Math.random() });
         }
       } else {
         for (let i = position; i < 0; i++) {
-          const lastEl = copy.pop();
-          if (!lastEl) return;
-          copy.unshift({ ...lastEl, tempId: Math.random() });
+          const el = copy.pop();
+          if (!el) break;
+          copy.unshift({ ...el, tempId: Math.random() });
         }
       }
 
-      setCards(copy);
-    },
-    [cards]
-  );
+      return copy;
+    });
+  }, []);
 
   useLayoutEffect(() => {
-    // Only update card size in response to a change event, NOT directly in the effect
     const mq = window.matchMedia("(min-width: 640px)");
 
-    const handleSetCardSize = () => {
+    const handleSetCardSize = () =>
       setCardSize(mq.matches ? CARD_SIZE_LG : CARD_SIZE_SM);
-    };
 
-    // Listen to media query changes for responsive card size
-    if (mq.addEventListener) {
-      mq.addEventListener("change", handleSetCardSize);
-    } else {
-      // Fallback for older browsers
-      window.addEventListener("resize", handleSetCardSize);
-    }
-
-    return () => {
-      if (mq.removeEventListener) {
-        mq.removeEventListener("change", handleSetCardSize);
-      } else {
-        window.removeEventListener("resize", handleSetCardSize);
-      }
-    };
+    mq.addEventListener("change", handleSetCardSize);
+    return () => mq.removeEventListener("change", handleSetCardSize);
   }, []);
 
   return (
     <div
-      className="relative w-full overflow-hidden bg-white py-48 mb-12"
-      style={{
-        height: SECTION_HEIGHT,
-      }}
+      className="relative w-full overflow-hidden bg-background py-48 mb-12"
+      style={{ height: SECTION_HEIGHT }}
       id="carousel-section"
     >
       {cards.map((t, idx) => {
-        let position = 0;
-
-        if (cards.length % 2) {
-          position = idx - (cards.length + 1) / 2;
-        } else {
-          position = idx - cards.length / 2;
-        }
+        const center = cards.length % 2 ? (cards.length + 1) / 2 : cards.length / 2;
+        const position = idx - center;
 
         return (
           <CarouselCard
@@ -97,19 +75,15 @@ export const Carousel = () => {
           />
         );
       })}
-      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-8">
-        <button
-          onClick={() => handleMove(-1)}
-          className="grid h-14 w-14 place-content-center text-3xl transition-colors hover:bg-black hover:text-white"
-        >
+
+      {/* Controls */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-4">
+        <Button  size="icon" onClick={() => handleMove(-1)}>
           <ChevronLeft />
-        </button>
-        <button
-          onClick={() => handleMove(1)}
-          className="grid h-14 w-14 place-content-center text-3xl transition-colors hover:bg-black hover:text-white"
-        >
+        </Button>
+        <Button size="icon" onClick={() => handleMove(1)}>
           <ChevronRight />
-        </button>
+        </Button>
       </div>
     </div>
   );

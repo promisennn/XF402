@@ -1,5 +1,5 @@
-import { Hero } from "@/components/Hero";
-import { Carousel } from "@/components/Carousel/Carousel";
+import Hero from "@/components/hero/Hero";
+import { Carousel } from "@/components/carousel/Carousel";
 import { Footer } from "@/components/Footer";
 export default function Home() {
   return (

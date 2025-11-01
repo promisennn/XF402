@@ -1,62 +1,62 @@
 [
   {
     "tempId": 0,
-    "text": "XF402 is an open protocol for renting and licensing digital collectibles — NFTs, tickets, and media — using Coinbase’s x402 payment standard.",
-    "sub": "Protocol Overview"
+    "sub": "Protocol Overview",
+    "text": "XF402 is an open protocol for time-bound rights and access control on digital assets. It extends Coinbase’s x402 payment primitive into a licensing layer for NFTs, tickets, and media."
   },
   {
     "tempId": 1,
-    "text": "Instead of permanent ownership, creators can define time-based usage tiers — 1-day, 1-week, or 1-month access — all paid via x402 micro-transactions.",
-    "sub": "Pay-Per-Duration"
+    "sub": "Programmable Usage",
+    "text": "Instead of permanent, static ownership, XF402 introduces programmable access windows such as 1 hour, 1 day, or 1 week, enforced through wallet-based payment proofs."
   },
   {
     "tempId": 2,
-    "text": "Built on Solana for speed and cost efficiency. Each rental payment can optionally mint a signed access receipt on-chain.",
-    "sub": "Powered by Solana"
+    "sub": "Solana Native",
+    "text": "Built for Solana's speed, cost efficiency, and agent economy. XF402 enables high-frequency micro-rentals and real-time access gating with minimal friction."
   },
   {
     "tempId": 3,
-    "text": "No smart-contract custody or token transfer required. XF402 runs on an honor system, using HTTP 402 payment flows and verifiable receipts.",
-    "sub": "Trust-Light Model"
+    "sub": "Trust-Light Architecture",
+    "text": "No asset custody or token wrapping. XF402 uses HTTP 402 payment semantics, verifiable receipts, and optional on-chain anchors to minimize trust without heavy infrastructure."
   },
   {
     "tempId": 4,
-    "text": "Integrate payments directly into APIs or NFT metadata. Add `profile: r402/v1` and define tiers, prices, and rights with simple JSON.",
-    "sub": "Developer Friendly"
+    "sub": "Simple Structured JSON",
+    "text": "Access tiers, durations, pricing, and rights are defined in a standard R402 JSON schema that can be embedded inside APIs, NFT metadata, or content gateways."
   },
   {
     "tempId": 5,
-    "text": "Includes a full developer suite — JavaScript SDK (`@XF402/r402`) and Python FastAPI plugin (`XF402-fastapi`) — to handle 402 paywalls automatically.",
-    "sub": "SDKs & Tools"
+    "sub": "Developer Toolkit",
+    "text": "Includes reference SDKs such as @xf402/r402 for JavaScript and xf402-fastapi for Python. These tools handle x402 and R402 request flows, validation, and client retries automatically."
   },
   {
     "tempId": 6,
-    "text": "Turn memes, art, or collectibles into economic objects. Each file becomes rentable, remixable, and revenue-sharing capable.",
-    "sub": "On-Chain Media Licensing"
+    "sub": "Media and IP Licensing",
+    "text": "Turn memes, art, and creative works into rentable and remixable digital licenses. Monetize culture without transferring or locking assets."
   },
   {
     "tempId": 7,
-    "text": "Agents, dapps, and creators can transact seamlessly through machine-to-machine micro-payments — the next phase of the x402 agentic economy.",
-    "sub": "Agentic Economy"
+    "sub": "Agent-First Payments",
+    "text": "Designed for both users and agents. Enables machine-to-machine micro-payments for data, models, assets, and APIs in an autonomous computing environment."
   },
   {
     "tempId": 8,
-    "text": "Deploy instantly — no infra setup required. Works with standard web servers, Next.js APIs, and any framework supporting HTTP headers.",
-    "sub": "Plug & Play Integration"
+    "sub": "Drop-In Adoption",
+    "text": "Works with any HTTP stack including Next.js, Express, FastAPI, and Cloudflare Workers. No direct RPC access or blockchain custody logic needed to begin."
   },
   {
     "tempId": 9,
-    "text": "From temporary access passes to ticket rentals, XF402 bridges Web2 simplicity with Web3 verifiability — the universal rental layer for digital assets.",
-    "sub": "Vision Statement"
+    "sub": "Universal Rental Layer",
+    "text": "From tickets and gaming assets to premium APIs, XF402 makes digital property dynamic, rentable, and interoperable across applications and ecosystems."
   },
   {
     "tempId": 10,
-    "text": "Every transaction returns a signed, portable license receipt — the user’s proof of access for a defined time window.",
-    "sub": "Access Receipts"
+    "sub": "Cryptographic Access Receipts",
+    "text": "Every payment produces a verifiable receipt that proves access within a defined time window. Receipts can be reused across applications and agent systems."
   },
   {
     "tempId": 11,
-    "text": "The mission is simple: move digital ownership from static possession to dynamic participation — rent, share, and remix on your own terms.",
-    "sub": "XF402 Philosophy"
+    "sub": "New Ownership Paradigm",
+    "text": "XF402 shifts digital ownership from static possession to permission-based usage. This enables shared access rights, usage-based economics, and collaborative value flows."
   }
 ]
