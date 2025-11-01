@@ -3,7 +3,7 @@
 import { useLayoutEffect, useState, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import XF402_DATA from "./data.json";
-import { CarouselCard } from "./CarouselCard";
+import { CarouselCard } from "./card";
 import { Button } from "@xf402/ui/components/button";
 
 const CARD_SIZE_LG = 400;
