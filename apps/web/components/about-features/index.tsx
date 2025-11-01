@@ -10,7 +10,7 @@ const CARD_SIZE_LG = 400;
 const CARD_SIZE_SM = 350;
 const SECTION_HEIGHT = 700;
 
-export const Carousel = () => {
+export const AboutFeatures = () => {
   const [cardSize, setCardSize] = useState(() => {
     if (typeof window !== "undefined") {
       return window.matchMedia("(min-width: 640px)").matches
