@@ -1,4 +1,5 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import '@xf402/tailwind-config';
 
 :root {
   --background: #004CF8;

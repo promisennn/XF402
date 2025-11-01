@@ -155,7 +155,7 @@ const Buttons = ({
   );
 };
 
-const SocialButtons = ({}) => {
+const SocialButtons = () => {
   return (
     <div className="relative flex items-center justify-center bg-white h-10" onClick={() => {
       const carouselSection = document.getElementById("carousel-section");

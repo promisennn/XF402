@@ -1,7 +1,6 @@
-import type { NextConfig } from "next";
 import nextra from "nextra";
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   /* config options here */
   serverExternalPackages: [],
 };

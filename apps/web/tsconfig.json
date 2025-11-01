@@ -1,0 +1,16 @@
+{
+  "extends": "@xf402/typescript-config/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": ".",                               
+    "paths": {
+      "@/*": ["./*"]                              
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "next-env.d.ts",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
+}

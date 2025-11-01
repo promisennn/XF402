@@ -1,0 +1,7 @@
+{
+    "name": "@xf402/js",
+    "version": "0.0.0",
+    "main": "src/index.ts",
+    "private": false
+  }
+  
