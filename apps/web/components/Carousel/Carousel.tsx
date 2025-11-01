@@ -7,7 +7,7 @@ import { CarouselCard } from "./CarouselCard";
 import { Button } from "@xf402/ui/components/button";
 
 const CARD_SIZE_LG = 400;
-const CARD_SIZE_SM = 400;
+const CARD_SIZE_SM = 350;
 const SECTION_HEIGHT = 700;
 
 export const Carousel = () => {
