@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
     if (tx && receipts[tx] && receipts[tx] > now) {
       const res = NextResponse.json({
         unlocked: true,
-        url: "/sample-nft.png",
+        url: "/nft-sample.png",
         valid_until: receipts[tx],
       });
 
@@ -37,7 +37,7 @@ export async function GET(req: NextRequest) {
 
       const res = NextResponse.json({
         unlocked: true,
-        url: "/sample-nft.png",
+        url: "/nft-sample.png",
         receipt: tx,
         valid_until: validUntil,
       });
