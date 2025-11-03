@@ -1,177 +1,125 @@
+# 🌀 XF402 — Time-Based Access for Digital Assets
 
-# XF402 — Time-Based Access for Digital Assets
+[<img src="https://raw.githubusercontent.com/promisennn/XF402/main/images/XLogo.png" alt="X logo" width="20"/> XF402 on X/Twitter](https://x.com/XF402)
 
+**Temporary rights. On-chain proof. Powered by [x402](https://github.com/coinbase/x402) + Solana.**
 
-[<img src="images/Xlogo.png" alt="X logo" width="16"/> - XF402 Protocol X/Twitter](https://x.com/XF402)
+---
 
-**Temporary rights. On-chain proof. Powered by x402 + Solana.**
+## 🌐 What is XF402?
 
-`XF402` extends Coinbase's **x402** standard to support **renting / temporary access rights** to NFTs, content, APIs, and collectibles using crypto payments.
+**XF402** is an open protocol for **renting, licensing, and gating access** to digital assets.  
+It extends Coinbase’s **x402 payment primitive** to define time-based access rights — turning _ownership_ into _temporary, programmable access._
 
 **Think:**
 
-- ✅ Rent an NFT for 1 day
-- ✅ Pay for 1-week access to a dataset
-- ✅ Buy a 30-day pass to premium content
-- ✅ Let memes & media earn micro-licensing fees
-- ✅ Agent-to-agent paid access (AI economy)
+- ⏱ Rent an NFT for 1 day
+- 💾 Pay for a 1-week API access token
+- 🎫 Buy a 30-day digital pass for an event or dataset
+- 🧠 License AI models or media for short-term use
+- 🖼 Monetize memes and content through timed unlocks
 
 ---
 
-## 🧠 What is XF402?
+## ⚙️ How It Works
 
-XF402 adds a new profile to x402: **R402 (Rent-402)**
+1. **User requests a resource** → server responds with an `HTTP 402 Payment Required` and tier info (`1d`, `7d`, `30d`).
+2. **User pays via wallet / tx** → server verifies payment or mock tx.
+3. **Server issues a verifiable receipt (JWT)** — stored locally or on-chain.
+4. **Access granted** until expiry → after that, content is locked again.
 
-When a client requests a protected resource:
-
-1. The server returns `402 Payment Required`
-2. With JSON defining:
-    - Access tiers: `1d`, `7d`, `30d`, etc
-    - Prices in USDC / SOL
-    - Rights: `view`, `remix`, `commercial-lite`
-3. User pays (initially honor-system, later verified)
-4. Server unlocks + returns a **signed receipt**
-5. Client can re-access until the receipt expires
-
-> **Own forever, or rent the right to use — your choice.**
+> FX402 can wrap around **IPFS, Arweave, or any storage layer**, acting as a **time-gated Web3 gateway**.
 
 ---
 
-## 🎯 Why?
+## 🧱 Core Components
 
-Blockchain solved ownership.  
-XF402 solves **usage**.
-
-| Problem                          | XF402 Fix                          |
-|-----------------------------------|-------------------------------------|
-| NFTs have unclear utility         | Time-based rights = clear value     |
-| Creators can't monetize memes     | Rentable memes                     |
-| Subscriptions = centralized billing | On-chain time-boxed access        |
-| AI agents need pay-for-access flows | 402 + micro USDC payments         |
-
-We bring **Web2-style paywalls** to **Web3 wallets + agents**.
+| Component       | Description                                          |
+| --------------- | ---------------------------------------------------- |
+| `@xf402/js`     | JavaScript SDK for integrating XF402 flows in dApps  |
+| `fx402-fastapi` | Python server library for issuing/verifying receipts |
+| `xf402-web`     | Example Next.js frontend (live demo + docs)          |
+| `xf402-rust`    | Solana-native module (coming soon)                   |
 
 ---
 
-## 🚀 Try the Demo
+## 🧩 Example Flow
 
-> _Coming Soon_ — Solana devnet version.
-
-A tiny Next.js PoC shows:
-
-- Click to access protected content
-- See x402 rental pricing
-- Pay micro-USDC (devnet)
-- Unlock content with expiration timer
-
----
-
-## 📦 Packages Coming Soon
-
-| Package         | Description                     |
-|-----------------|---------------------------------|
-| `@xf402/js`     | Client SDK for browser & agents |
-| `xf402-fastapi` | Python server decorators        |
-| `xf402-node`    | Node server utils               |
-| `xf402-verify`  | Receipt/JWT validation          |
-| `xf402-rust`    | Solana program + verifier       |
-
----
-
-## 🧰 Developer Preview (Concept)
-
-```ts
-import { r402Fetch, attachWallet } from "@xf402/js";
-
-attachWallet(mySolanaWallet);
-
-const res = await r402Fetch("https://site.com/poster-highres.png");
-
-const img = await res.blob(); // unlocked
-```
-
-Server returns:
-
-```json
+```http
+GET /nft/rare-001.png
+→ 402 Payment Required
 {
-  "standard": "x402",
-  "profile": "r402/v1",
-  "usage": {
-    "tiers": [
-      { "id": "1d", "price": "0.05 USDC" },
-      { "id": "7d", "price": "0.25 USDC" }
-    ],
-    "modes": ["view"]
-  },
-  "pay_to": "SOL_WALLET",
-  "chain": "solana"
+  "profile": "r402",
+  "tiers": [
+    { "id": "1d", "price": "0.05", "currency": "SOL" },
+    { "id": "7d", "price": "0.2", "currency": "SOL" }
+  ]
+}
+
+POST /nft/rare-001.png (with tx or mock proof)
+→ 200 OK
+{
+  "receipt": { "valid_until": 1730524800, "tier_id": "1d" },
+  "unlocked_url": "ipfs://bafy.../image.png"
 }
 ```
 
 ---
 
-## 🏗️ Architecture
+## 🧭 Roadmap
 
-- ✅ Phase 1: Honor-system (client sends tx hash)
-- ✅ Phase 2: Facilitator verifies payment + signs JWT receipt
-- 🚧 Phase 3: On-chain receipt registry + rent escrow
-- 🔥 Phase 4: Solana program (xf402-rust) for trust-minimized flow
-
----
-
-## 🛣️ Roadmap
-
-| Stage                    | Goal                                    | Tech                  |
-|--------------------------|-----------------------------------------|-----------------------|
-| ✅ Prototype docs & flow | Show concept works                      | HTTP + Next.js        |
-| ✅ JS + Python stubs     | Basic 402 → pay → unlock                | JS / FastAPI          |
-| 🔜 Devnet demo           | Real Solana USDC + Phantom              | Solana + Vercel       |
-| 🔜 Rust SVM program      | On-chain receipt + expirable access     | Anchor                |
-| 🔜 NFT metadata extension| Native rental info in metadata          | Metaplex JSON         |
-| 🔜 Marketplace integration | Rent button on NFT pages              | Solana wallets        |
-| 🌐 Multi-chain bridges   | Base / ETH support                      | Cross-chain receipts  |
-
-**Future:**
-
-- Optional escrow (true NFT rental)
-- Auto-splits for remixes
-- Agent-to-agent auto-payments
-- Distributed facilitator network
+| Phase | Goal                                            | Status         |
+| ----- | ----------------------------------------------- | -------------- |
+| 1     | Protocol Docs + PoC — Write spec, schemas, demo | ✅ Done        |
+| 2     | Web Demo + SDKs — fx402.vercel.app + @xf402/js  | 🚧 In progress |
+| 3     | FastAPI Integration — backend + receipt signing | 🕓 Planned     |
+| 4     | Solana Integration — on-chain & metadata        | 🧱 Planned     |
+| 5     | IPFS Gateway Wrapper — timed delivery           | 🧠 Concept     |
+| 6     | Full Dev Portal + Docs                          | 🚀 Soon        |
 
 ---
 
-## 🧪 Status
+## 🧠 Philosophy
 
-| Component      | Status             |
-|----------------|--------------------|
-| Docs           | ✅ Live            |
-| Protocol       | ✅ Spec complete   |
-| JS SDK         | 🚧 In development  |
-| Python SDK     | 🚧 In development  |
-| Rust program   | 🧠 Design phase    |
-| Demo           | 🎨 Building        |
+> “Digital ownership shouldn’t always be forever.”
+
+FX402 reimagines digital access as fluid, programmable, and verifiable,  
+bridging Web2 economics and Web3 composability.
 
 ---
 
-## 🤝 Contributing
+## 📦 Repositories
 
-Want to help build the rental layer for digital assets?  
-PRs and feedback welcome.
-
----
-
-## 📬 Contact / Community
-
-- Website: coming soon
-- Discord: coming soon
+- **xf402** — main monorepo
+- **xf402-rust** — Solana module
+- **xf402-docs** — protocol + docs
+- **xf402-examples** — showcase + templates
 
 ---
 
-## ✨ Vision
+## 🧰 Stack
 
-The internet has ownership primitives.  
-XF402 introduces usage primitives.
+- **Frontend:** Next.js + Tailwind
+- **Backend:** Next API routes + FastAPI
+- **Blockchain:** Solana Devnet (Anchor, Token2022)
+- **Payments:** Coinbase x402 primitives
+- **Storage:** IPFS / Arweave (time-gated wrapper)
 
-Digital assets become more than JPEGs —  
-they become economic objects with time and rights.
-# XF402
+---
+
+## ⚡️ Quick Start (Demo)
+
+```bash
+git clone https://github.com/your-org/xf402
+cd xf402
+pnpm install
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) → click “Test XF402”.
+
+---
+
+## 🪙 License
+
+MIT © 2025 FX402 Contributors
