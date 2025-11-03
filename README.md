@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/promisennn/XF402/main/images/logo.png" alt="How XF402 Works Diagram" width="60" height="60" /> XF402 — Time-Based Access for Digital Assets
+# <img src="https://raw.githubusercontent.com/promisennn/XF402/main/images/logo.png" alt="How XF402 Works Diagram" width="40" height="40" /> XF402 — Time-Based Access for Digital Assets
 
 [<img src="https://raw.githubusercontent.com/promisennn/XF402/main/images/XLogo.png" alt="X logo" width="20"/> XF402 on X/Twitter](https://x.com/XF402)
 
