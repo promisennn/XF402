@@ -1,4 +1,4 @@
-# 🌀 XF402 — Time-Based Access for Digital Assets
+# <img src="https://raw.githubusercontent.com/promisennn/XF402/main/images/logo.png" alt="How XF402 Works Diagram" width="60" height="60" /> XF402 — Time-Based Access for Digital Assets
 
 [<img src="https://raw.githubusercontent.com/promisennn/XF402/main/images/XLogo.png" alt="X logo" width="20"/> XF402 on X/Twitter](https://x.com/XF402)
 
@@ -28,9 +28,7 @@ It extends Coinbase’s **x402 payment primitive** to define time-based access r
 3. **Server issues a verifiable receipt (JWT)** — stored locally or on-chain.
 4. **Access granted** until expiry → after that, content is locked again.
 
-
 <img src="https://raw.githubusercontent.com/promisennn/XF402/main/images/diagram-how-it-works.png" alt="How XF402 Works Diagram" width="1500" height="500" />
-
 
 > FX402 can wrap around **IPFS, Arweave, or any storage layer**, acting as a **time-gated Web3 gateway**.
 
